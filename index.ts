@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import * as _ from "lodash";
 
 // var dirPath = "";
 // process.argv ? dirPath = path.join(__dirname, process.argv[0]) : dirPath = __dirname;
@@ -14,6 +15,8 @@ import * as path from "path";
 //   }
 // });
 
-for (const item of process.argv) {
-  console.log(item);
-}
+var args = process.argv;
+
+_.forEach(args, (item, index) => {
+  console.log(index.toString() + ": " + item);
+});
