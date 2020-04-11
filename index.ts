@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import * as _ from "lodash";
+import * as glob from "glob";
 
 // var dirPath = "";
 // process.argv ? dirPath = path.join(__dirname, process.argv[0]) : dirPath = __dirname;
