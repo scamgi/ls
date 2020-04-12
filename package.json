@@ -4,6 +4,8 @@
   "description": "List files",
   "main": "js/index.js",
   "scripts": {
+    "start": "node js/index.js",
+    "build": "gulp",
     "test": "gulp && node js/index.js"
   },
   "repository": {
