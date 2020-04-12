@@ -2,21 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as _ from "lodash";
 import * as glob from "glob";
-
-// initialization of args
-var args = _.slice(process.argv, 2);
-
-// initialization of pattern
-var pattern = "";
-if (args.length == 0)
-  pattern = "*";
-else 
-  pattern = args[0];
-
-// initialization of options
-var options: glob.IOptions = {
-  dot: true
-};
+import { options, pattern } from "./variables";
 
 // glob call
 glob(pattern, options, (err, files) => {
