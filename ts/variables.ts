@@ -13,7 +13,8 @@ else
 
 // initialization of options
 var options: IOptions = {
-  dot: true
+  dot: true,
+  mark: true
 };
 
 export { args, pattern, options };

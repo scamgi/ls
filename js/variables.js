@@ -13,6 +13,7 @@ else
     exports.pattern = pattern = args[0];
 // initialization of options
 var options = {
-    dot: true
+    dot: true,
+    mark: true
 };
 exports.options = options;
