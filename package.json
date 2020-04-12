@@ -2,9 +2,9 @@
   "name": "ls",
   "version": "1.0.0",
   "description": "List files",
-  "main": "index.js",
+  "main": "js/index.js",
   "scripts": {
-    "test": "tsc index.ts && node index.js"
+    "test": "gulp && node js/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,8 @@
     "@types/glob": "^7.1.1",
     "@types/lodash": "^4.14.149",
     "@types/node": "^13.11.1",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1",
     "typescript": "^3.8.3"
   },
   "dependencies": {
