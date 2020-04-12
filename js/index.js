@@ -1,16 +1,27 @@
 "use strict";
 exports.__esModule = true;
 var _ = require("lodash");
-// var dirPath = "";
-// process.argv ? dirPath = path.join(__dirname, process.argv[0]) : dirPath = __dirname;
-// // var dirPath = path.join(__dirname, process.argv[0]);
-// fs.readdir(dirPath, (err, files) => {
-//   if (err) console.log('Error: ' + err);
-//   for (const file of files) {
-//     console.log(file);
-//   }
-// });
-var args = process.argv;
-_.forEach(args, function (item, index) {
-    console.log(index.toString() + ": " + item);
+var glob = require("glob");
+// initialization of args
+var args = _.slice(process.argv, 2);
+// initialization of pattern
+var pattern = "";
+if (args.length == 0)
+    pattern = "*";
+else
+    pattern = args[0];
+// glob call
+glob(pattern, function (err, files) {
+    if (err) {
+        console.log('Error: ' + err.message);
+        return;
+    }
+    _.forEach(files, function (f) {
+        console.log(f);
+    });
 });
+// args = _.slice(args, 2);
+// console.log('Args length is: ' + args.length.toString());
+// _.forEach(args, (item, index) => {
+//   console.log(index.toString() + ": " + item);
+// });
