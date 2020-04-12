@@ -13,8 +13,13 @@ if (args.length == 0)
 else 
   pattern = args[0];
 
+// initialization of options
+var options: glob.IOptions = {
+  dot: true
+};
+
 // glob call
-glob(pattern, (err, files) => {
+glob(pattern, options, (err, files) => {
   if (err) {
     console.log('Error: ' + err.message);
     return;

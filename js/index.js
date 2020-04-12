@@ -10,8 +10,12 @@ if (args.length == 0)
     pattern = "*";
 else
     pattern = args[0];
+// initialization of options
+var options = {
+    dot: true
+};
 // glob call
-glob(pattern, function (err, files) {
+glob(pattern, options, function (err, files) {
     if (err) {
         console.log('Error: ' + err.message);
         return;
