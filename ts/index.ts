@@ -15,8 +15,8 @@ glob(pattern, options, (err, files) => {
   _.forEach(files, (f) => {
     // this checks if f is a directory
     if (_.endsWith(f, '/')) // if yes
-      console.log(green(f));
-    else // if no
-      console.log(f);
+      f = green(f);
+
+    console.log(f);
   });
 });

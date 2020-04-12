@@ -13,8 +13,7 @@ glob(variables_1.pattern, variables_1.options, function (err, files) {
     _.forEach(files, function (f) {
         // this checks if f is a directory
         if (_.endsWith(f, '/')) // if yes
-            console.log(colors_1.green(f));
-        else // if no
-            console.log(f);
+            f = colors_1.green(f);
+        console.log(f);
     });
 });
