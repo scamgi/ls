@@ -11,10 +11,10 @@ if (args.length == 0)
 else 
   pattern = args[0];
 
-// initialization of options
-var options: IOptions = {
+// initialization of glob_options
+var glob_options: IOptions = {
   dot: true,
   mark: true
 };
 
-export { args, pattern, options };
+export { args, pattern, glob_options };
