@@ -1,5 +1,3 @@
-import * as fs from "fs";
-import * as path from "path";
 import * as _ from "lodash";
 import * as glob from "glob";
 import { glob_options, pattern } from "./variables";
