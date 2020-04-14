@@ -33,6 +33,6 @@
     "lodash": "^4.17.15"
   },
   "bin": {
-    "ls": "./js/index.js"
+    "ls": "./bin/ls.js"
   }
 }
