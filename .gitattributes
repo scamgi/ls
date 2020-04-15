@@ -1,2 +1,2 @@
-# sets js files as auto-generated code
-js/* linguist-generated
+# sets js files as ts code
+*.js linguist-language=TypeScript
