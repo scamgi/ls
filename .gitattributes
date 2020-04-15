@@ -1,2 +1,2 @@
 # sets js files as auto-generated code
-js/**/* linguist-generated
+js/* linguist-generated
