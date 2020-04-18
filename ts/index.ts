@@ -3,7 +3,6 @@ import * as glob from "glob";
 import { glob_options, pattern } from "./variables";
 import { red, bold, green } from "colors";
 import { existsSync, lstatSync } from "fs";
-import * as path from "path";
 
 var p = pattern;
 if (existsSync(p) && lstatSync(p).isDirectory()) {
