@@ -2,6 +2,9 @@
 exports.__esModule = true;
 var colors_1 = require("colors");
 var lodash_1 = require("lodash");
+/**
+ * it default displays the compact view
+ */
 function display(files) {
     var maxWidth = process.stdout.columns; // max width of the console
     var tabLength = 8; // tab length (which is 8)

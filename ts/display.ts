@@ -1,6 +1,9 @@
 import { green } from "colors";
 import { forEach, endsWith } from "lodash";
 
+/**
+ * it default displays the compact view
+ */
 export default function display(files: string[]) {
   const maxWidth = process.stdout.columns; // max width of the console
   const tabLength = 8; // tab length (which is 8)
