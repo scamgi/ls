@@ -5,10 +5,9 @@ var glob = require("glob");
 var variables_1 = require("./variables");
 var colors_1 = require("colors");
 var fs_1 = require("fs");
-var path = require("path");
 var p = variables_1.pattern;
 if (fs_1.existsSync(p) && fs_1.lstatSync(p).isDirectory()) {
-    variables_1.glob_options.cwd = path.resolve(p);
+    variables_1.glob_options.cwd = p;
     p = "*";
 }
 // glob call

@@ -7,7 +7,7 @@ import * as path from "path";
 
 var p = pattern;
 if (existsSync(p) && lstatSync(p).isDirectory()) {
-  glob_options.cwd = path.resolve(p);
+  glob_options.cwd = p;
   p = "*";
 }
 
