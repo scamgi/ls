@@ -2,7 +2,7 @@ import { green } from "colors";
 import { forEach, endsWith } from "lodash";
 
 export default function display(files: string[]) {
-  const maxWidth = 80; // max width of the console
+  const maxWidth = process.stdout.columns; // max width of the console
   const tabLength = 8; // tab length (which is 8)
   var line = "";
   forEach(files, (f) => {

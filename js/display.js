@@ -3,7 +3,7 @@ exports.__esModule = true;
 var colors_1 = require("colors");
 var lodash_1 = require("lodash");
 function display(files) {
-    var maxWidth = 80; // max width of the console
+    var maxWidth = process.stdout.columns; // max width of the console
     var tabLength = 8; // tab length (which is 8)
     var line = "";
     lodash_1.forEach(files, function (f) {
