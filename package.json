@@ -4,9 +4,9 @@
   "description": "List files",
   "main": "js/index.js",
   "scripts": {
-    "start": "node js/index.js",
+    "start": "node bin/ls.js",
     "build": "gulp",
-    "test": "gulp && node js/index.js"
+    "test": "gulp && node bin/ls.js"
   },
   "repository": {
     "type": "git",
