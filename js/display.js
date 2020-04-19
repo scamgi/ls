@@ -6,27 +6,36 @@ var lodash_1 = require("lodash");
  * it default displays the compact view
  */
 function display(files) {
-    var maxWidth = process.stdout.columns; // max width of the console
-    var tabLength = 8; // tab length (which is 8)
-    var line = "";
-    lodash_1.forEach(files, function (f) {
-        var fileLength = Math.ceil((f.length + 2) / tabLength) * tabLength;
-        // initialize file
-        var file = "";
-        if (lodash_1.endsWith(f, "/"))
-            file = colors_1.green(f.padEnd(fileLength));
+    var filesLengths = lodash_1.map(files, function (file) { return file.length + 2; }); // array of filenames lengths
+    /* table properties */
+    //    cols = Math.floor(actual console width / the max filelangth)
+    var table = { cols: 0, rows: 0 };
+    table.cols = Math.floor(process.stdout.columns / lodash_1.max(filesLengths));
+    table.rows = Math.ceil(files.length / table.cols);
+    // initialization of padding values
+    var paddings = [];
+    for (var col = 0; col < table.cols; col++) {
+        if (col < table.cols - 1)
+            paddings.push(lodash_1.max(filesLengths.slice(col * table.rows, (col + 1) * table.rows)));
         else
-            file = f.padEnd(fileLength);
-        if (line.length + fileLength <= maxWidth) { // if this filename can be displayed, then insert it
-            line = line + file;
+            paddings.push(lodash_1.max(filesLengths.slice(col * table.rows)));
+    }
+    // print all
+    for (var row = 0; row < table.rows; row++) {
+        for (var col = 0; col < table.cols; col++) {
+            var i = (col * table.rows) + row;
+            // if this cell must be empty, then break the line and continue
+            if (i >= files.length) {
+                continue;
+            }
+            // print the filename
+            var file = files[i];
+            if (lodash_1.endsWith(file, "/"))
+                process.stdout.write(colors_1.green(file.padEnd(paddings[col])));
+            else
+                process.stdout.write(file.padEnd(paddings[col]));
         }
-        else { // else log this line and create a new one
-            console.log(line);
-            line = file;
-        }
-    });
-    // if you execute the code, you see that the last line is never printed.
-    // in order to avoid that, i added a last console.log.
-    console.log(line);
+        process.stdout.write("\n");
+    }
 }
 exports["default"] = display;
