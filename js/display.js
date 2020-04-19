@@ -26,7 +26,6 @@ function display(files) {
             var i = (col * table.rows) + row;
             // if this cell must be empty, then break the line and continue
             if (i >= files.length) {
-                process.stdout.write("\n");
                 continue;
             }
             // print the filename
@@ -35,11 +34,8 @@ function display(files) {
                 process.stdout.write(colors_1.green(file.padEnd(paddings[col])));
             else
                 process.stdout.write(file.padEnd(paddings[col]));
-            // if this is the last column of this row, insert a breakline
-            if (col == table.cols - 1) {
-                process.stdout.write('\n');
-            }
         }
+        process.stdout.write("\n");
     }
 }
 exports["default"] = display;

@@ -29,7 +29,6 @@ export default function display(files: string[]) {
       var i = (col * table.rows) + row;
       // if this cell must be empty, then break the line and continue
       if (i >= files.length) {
-        process.stdout.write("\n");
         continue;
       }
 
@@ -40,12 +39,8 @@ export default function display(files: string[]) {
       else
         process.stdout.write(file.padEnd(paddings[col]));
 
-      // if this is the last column of this row, insert a breakline
-      if (col == table.cols - 1) {
-        process.stdout.write('\n');
-      }
-
     }
+    process.stdout.write("\n");
   }
 
 }
