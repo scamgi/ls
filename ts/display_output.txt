@@ -1,4 +1,6 @@
-file-1  file-5  file-9  file-13
-file-2  file-6  file-10 file-14
-file-3  file-7  file-11 file-15
-file-4  file-8  file-12
+standard output
+file-1    file-6    file-11   file-16
+file-2    file-7    file-12   file-17
+file-3    file-8    file-13   file-18
+file-4    file-9    file-14
+file-5    file-10   file-15
