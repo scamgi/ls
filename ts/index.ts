@@ -1,17 +1,10 @@
 import * as _ from "lodash";
 import * as glob from "glob";
 import { glob_options, pattern } from "./variables";
-import { red, bold, green } from "colors";
-import { existsSync, lstatSync } from "fs";
-
-var p = pattern;
-if (existsSync(p) && lstatSync(p).isDirectory()) {
-  glob_options.cwd = p;
-  p = "*";
-}
+import { red, green } from "colors";
 
 // glob call
-glob(p, glob_options, (err, files) => {
+glob(pattern, glob_options, (err, files) => {
   if (err) {
     console.log(red('Error: ' + err.message));
     return;
