@@ -1,25 +1,40 @@
 import { green } from "colors";
-import { map, max, forEach, endsWith } from "lodash";
+import { map, max, endsWith } from "lodash";
+import { insertAt } from "./utilities";
+
+function print(file: string, padEnd: number) {
+  var output = file.padEnd(padEnd);
+
+  if (endsWith(file, "/"))
+    output = green(output);
+
+  process.stdout.write(output);
+}
 
 /**
  * it default displays the compact view
  */
 export default function display(files: string[]) {
-  const filesLengths = map(files, (file) => file.length + 2); // array of filenames lengths
-
+  
   /* table properties */
-  //    cols = Math.floor(actual console width / the max filelangth)
+  const maxFileLength = max(map(files, (file) => file.length + 2)); // array of filenames lengths
   var table = { cols: 0, rows: 0 };
-  table.cols = Math.floor(process.stdout.columns / max(filesLengths));
+  //    cols = Math.floor(actual console width / the max filelangth)
+  table.cols = Math.floor(process.stdout.columns / maxFileLength);
   table.rows = Math.ceil(files.length / table.cols);
 
+  // add empty spaces in order to adjust the columns
+  var emptySpaces = (table.cols * table.rows) - files.length;
+  for (var i = 0; i < emptySpaces; i++) {
+    var index = (files.length) - (i * table.rows);
+    insertAt(files, index, "");
+  }
+
   // initialization of padding values
+  const filesLengths = map(files, (file) => file.length + 2); // array of filenames lengths
   var paddings: number[] = [];
   for (var col = 0; col < table.cols; col++) {
-    if (col < table.cols - 1)
-      paddings.push(max(filesLengths.slice(col * table.rows, (col + 1) * table.rows)))
-    else
-      paddings.push(max(filesLengths.slice(col * table.rows)));
+    paddings.push(max(filesLengths.slice(col * table.rows, (col + 1) * table.rows)))
   }
 
   // print all
@@ -27,18 +42,13 @@ export default function display(files: string[]) {
     for (var col = 0; col < table.cols; col++) {
 
       var i = (col * table.rows) + row;
-      // if this cell must be empty, then break the line and continue
-      if (i >= files.length) {
+      var file = files[i];
+      
+      if (file == "")
         continue;
-      }
 
       // print the filename
-      var file = files[i];
-      if (endsWith(file, "/"))
-        process.stdout.write(green(file.padEnd(paddings[col])));
-      else
-        process.stdout.write(file.padEnd(paddings[col]));
-
+      print(file, paddings[col]);
     }
     process.stdout.write("\n");
   }
