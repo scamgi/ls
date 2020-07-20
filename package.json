@@ -30,7 +30,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "glob": "^7.1.6",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.19"
   },
   "bin": {
     "ls": "./bin/ls.js"
